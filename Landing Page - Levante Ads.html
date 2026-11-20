@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
@@ -550,13 +551,18 @@
           <div class="lg:col-span-6">
             <div class="bg-obsidian/90 border border-gold/25 rounded-2xl p-6 sm:p-8 shadow-xl">
               
-              <!-- Formulário -->
-              <form id="leadForm" class="space-y-4" novalidate>
+              <!-- Formulário integrado com FormSubmit para levanteadsofc@gmail.com -->
+              <form id="leadForm" action="https://formsubmit.co/levanteadsofc@gmail.com" method="POST" class="space-y-4" novalidate>
+                <!-- Configurações ocultas do FormSubmit -->
+                <input type="hidden" name="_subject" value="Novo Lead - Levante Ads" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+
                 <div>
                   <label for="nome" class="block font-display text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
                     Nome completo *
                   </label>
-                  <input type="text" id="nome" name="nome" required placeholder="Seu nome"
+                  <input type="text" id="nome" name="Nome" required placeholder="Seu nome"
                          class="input-luxury w-full px-4 py-3.5 rounded-xl text-sm" />
                 </div>
 
@@ -564,7 +570,7 @@
                   <label for="whatsapp" class="block font-display text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
                     WhatsApp *
                   </label>
-                  <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(00) 00000-0000" maxlength="15"
+                  <input type="tel" id="whatsapp" name="WhatsApp" required placeholder="(00) 00000-0000" maxlength="15"
                          class="input-luxury w-full px-4 py-3.5 rounded-xl text-sm" />
                 </div>
 
@@ -572,7 +578,7 @@
                   <label for="empresa" class="block font-display text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
                     Nome da Empresa *
                   </label>
-                  <input type="text" id="empresa" name="empresa" required placeholder="Nome do seu negócio"
+                  <input type="text" id="empresa" name="Empresa" required placeholder="Nome do seu negócio"
                          class="input-luxury w-full px-4 py-3.5 rounded-xl text-sm" />
                 </div>
 
@@ -580,9 +586,9 @@
                   <label for="investimento" class="block font-display text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
                     Investimento mensal em anúncios <span class="text-gray-500 font-normal normal-case">(opcional)</span>
                   </label>
-                  <select id="investimento" name="investimento"
+                  <select id="investimento" name="Investimento Mensal"
                           class="input-luxury w-full px-4 py-3.5 rounded-xl text-sm appearance-none cursor-pointer">
-                    <option value="">Selecione uma faixa de investimento</option>
+                    <option value="Não informado">Selecione uma faixa de investimento</option>
                     <option value="Até R$ 2.000/mês">Até R$ 2.000 / mês</option>
                     <option value="De R$ 2.000 a R$ 5.000/mês">De R$ 2.000 a R$ 5.000 / mês</option>
                     <option value="De R$ 5.000 a R$ 15.000/mês">De R$ 5.000 a R$ 15.000 / mês</option>
@@ -590,16 +596,20 @@
                   </select>
                 </div>
 
-                <!-- Alerta de Validação Inline -->
+                <!-- Alerta de Validação ou Erro Inline -->
                 <div id="formError" class="hidden text-xs text-amber-400 bg-amber-950/50 border border-amber-500/40 rounded-lg px-3.5 py-2.5">
                   Por favor, preencha seu nome, WhatsApp válido e o nome da empresa.
                 </div>
 
-                <button type="submit"
-                        class="w-full mt-2 py-4 px-6 rounded-xl bg-gold-metallic text-obsidian font-display font-bold text-xs sm:text-sm tracking-wider uppercase shadow-lg flex items-center justify-center gap-2 cursor-pointer">
-                  <span>QUERO CRESCER COM ESTRATÉGIA</span>
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <button type="submit" id="submitBtn"
+                        class="w-full mt-2 py-4 px-6 rounded-xl bg-gold-metallic text-obsidian font-display font-bold text-xs sm:text-sm tracking-wider uppercase shadow-lg flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed">
+                  <span id="submitBtnText">QUERO CRESCER COM ESTRATÉGIA</span>
+                  <svg id="submitBtnIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                  <svg id="submitBtnSpinner" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
                 </button>
 
@@ -617,21 +627,21 @@
                 </div>
                 <div>
                   <h3 class="font-display font-bold text-xl uppercase tracking-wider text-gold-light mb-2">
-                    Solicitação Recebida!
+                    Solicitação Enviada!
                   </h3>
                   <p id="successText" class="text-sm text-gray-300 leading-relaxed">
-                    Obrigado! Nossa equipe de especialistas já recebeu os dados da sua empresa e entrará em contato em breve.
+                    Obrigado! Seus dados foram enviados diretamente para nossa equipe de especialistas e entraremos em contato em breve.
                   </p>
                 </div>
                 <div class="pt-2 space-y-3">
-                  <a id="whatsappRedirectBtn" href="#" target="_blank" rel="noopener noreferrer"
+                  <a id="mailtoFallbackBtn" href="mailto:levanteadsofc@gmail.com"
                      class="w-full py-3.5 px-5 rounded-xl bg-gold-metallic text-obsidian font-display font-bold text-xs sm:text-sm tracking-wider uppercase inline-flex items-center justify-center gap-2">
-                    <span>Iniciar Atendimento no WhatsApp</span>
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+                    <span>Enviar Cópia Direta por E-mail</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </a>
-                  <button type="button" id="resetFormBtn" class="text-xs text-gray-400 hover:text-gold-light underline">
+                  <button type="button" id="resetFormBtn" class="block mx-auto text-xs text-gray-400 hover:text-gold-light underline">
                     Enviar outra solicitação
                   </button>
                 </div>
@@ -706,16 +716,21 @@
   <!-- ==================== SCRIPTS INTERATIVOS ==================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Número de WhatsApp da Agência (substitua pelo número oficial com DDI + DDD)
-      const AGENCY_WHATSAPP = '5500000000000';
+      // E-mail oficial da Levante Ads
+      const TARGET_EMAIL = 'levanteadsofc@gmail.com';
+      const FORMSUBMIT_AJAX_URL = `https://formsubmit.co/ajax/${TARGET_EMAIL}`;
 
       const whatsappInput = document.getElementById('whatsapp');
       const leadForm = document.getElementById('leadForm');
       const formError = document.getElementById('formError');
       const formSuccess = document.getElementById('formSuccess');
       const successText = document.getElementById('successText');
-      const whatsappRedirectBtn = document.getElementById('whatsappRedirectBtn');
+      const mailtoFallbackBtn = document.getElementById('mailtoFallbackBtn');
       const resetFormBtn = document.getElementById('resetFormBtn');
+      const submitBtn = document.getElementById('submitBtn');
+      const submitBtnText = document.getElementById('submitBtnText');
+      const submitBtnIcon = document.getElementById('submitBtnIcon');
+      const submitBtnSpinner = document.getElementById('submitBtnSpinner');
 
       // Máscara de Telefone Brasileiro: (XX) XXXXX-XXXX
       whatsappInput.addEventListener('input', (e) => {
@@ -733,8 +748,22 @@
         e.target.value = value;
       });
 
-      // Submissão do Formulário
-      leadForm.addEventListener('submit', (e) => {
+      // Controla o estado visual de carregamento do botão
+      function setLoadingState(isLoading) {
+        submitBtn.disabled = isLoading;
+        if (isLoading) {
+          submitBtnText.textContent = 'ENVIANDO SOLICITAÇÃO...';
+          submitBtnIcon.classList.add('hidden');
+          submitBtnSpinner.classList.remove('hidden');
+        } else {
+          submitBtnText.textContent = 'QUERO CRESCER COM ESTRATÉGIA';
+          submitBtnIcon.classList.remove('hidden');
+          submitBtnSpinner.classList.add('hidden');
+        }
+      }
+
+      // Submissão do Formulário via AJAX (FormSubmit -> levanteadsofc@gmail.com)
+      leadForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const nome = document.getElementById('nome').value.trim();
@@ -745,27 +774,57 @@
 
         // Validação básica
         if (!nome || digitsOnly.length < 10 || !empresa) {
+          formError.textContent = 'Por favor, preencha seu nome, WhatsApp válido e o nome da empresa.';
           formError.classList.remove('hidden');
           return;
         }
 
         formError.classList.add('hidden');
+        setLoadingState(true);
 
-        // Monta mensagem personalizada para redirecionamento ao WhatsApp
-        const investMsg = investimento ? `\n*Investimento pretendido:* ${investimento}` : '';
-        const message = `Olá, equipe *Levante Ads*! Gostaria de crescer com estratégia.\n\n*Nome:* ${nome}\n*Empresa:* ${empresa}\n*WhatsApp:* ${whatsapp}${investMsg}`;
-        const waUrl = `https://wa.me/${AGENCY_WHATSAPP}?text=${encodeURIComponent(message)}`;
+        // Prepara link mailto alternativo com os dados já preenchidos
+        const mailSubject = `Novo Lead - Levante Ads (${empresa})`;
+        const mailBody = `Olá, equipe Levante Ads!\n\nGostaria de solicitar um diagnóstico estratégico:\n\nNome: ${nome}\nWhatsApp: ${whatsapp}\nEmpresa: ${empresa}\nInvestimento mensal pretendido: ${investimento || 'Não informado'}`;
+        mailtoFallbackBtn.href = `mailto:${TARGET_EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
 
-        whatsappRedirectBtn.href = waUrl;
-        successText.innerHTML = `Obrigado, <strong class="text-white">${nome}</strong>! Recebemos os dados da <strong class="text-white">${empresa}</strong>. Clique abaixo para falar imediatamente com nosso especialista no WhatsApp.`;
+        try {
+          const response = await fetch(FORMSUBMIT_AJAX_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              _subject: 'Novo Lead - Levante Ads',
+              _template: 'table',
+              _captcha: 'false',
+              Nome: nome,
+              WhatsApp: whatsapp,
+              Empresa: empresa,
+              'Investimento Mensal': investimento || 'Não informado'
+            })
+          });
 
-        leadForm.classList.add('hidden');
-        formSuccess.classList.remove('hidden');
+          if (!response.ok) {
+            throw new Error('Falha no envio automático.');
+          }
+
+          successText.innerHTML = `Obrigado, <strong class="text-white">${nome}</strong>! Os dados da <strong class="text-white">${empresa}</strong> foram enviados com sucesso para <span class="text-gold-light">${TARGET_EMAIL}</span>. Em breve nossa equipe entrará em contato.`;
+
+          leadForm.classList.add('hidden');
+          formSuccess.classList.remove('hidden');
+        } catch (error) {
+          formError.innerHTML = `Não foi possível concluir o envio automático agora. Você pode enviar diretamente clicando <a href="${mailtoFallbackBtn.href}" class="underline font-semibold text-gold-light">aqui para abrir seu e-mail (${TARGET_EMAIL})</a>.`;
+          formError.classList.remove('hidden');
+        } finally {
+          setLoadingState(false);
+        }
       });
 
       // Resetar Formulário
       resetFormBtn.addEventListener('click', () => {
         leadForm.reset();
+        formError.classList.add('hidden');
         formSuccess.classList.add('hidden');
         leadForm.classList.remove('hidden');
       });
@@ -773,3 +832,4 @@
   </script>
 </body>
 </html>
+```
